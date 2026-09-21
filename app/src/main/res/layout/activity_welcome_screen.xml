@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginScreen"
+    android:orientation="vertical">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
+
+        <!-- Logo -->
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/weatherwise_logo"
+            android:contentDescription="WeatherWise Logo" />
+
+        <!-- Welcome Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to WeatherWise"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue_700"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Tagline -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your local weather, simplified."
+            android:textSize="16sp"
+            android:textColor="@color/blue_500"
+            android:layout_marginBottom="32dp"/>
+
+        <!-- Register Button -->
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:id="@+id/registerbtn"
+            style="@style/Widget.Material3.Button"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Login Button -->
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/loginbtn"
+            android:text="Login"
+            style="@style/Widget.Material3.Button"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
