@@ -34,8 +34,11 @@ class RegisterScreen : AppCompatActivity() {
 //        }
     }
 
-
-
+    fun log_in(view: View)
+    {
+        val intent = Intent(this, LoginScreen::class.java)
+        startActivity(intent)
+    }
     fun send_info(view: View)
     {
         //collecting the user's input
