@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Root layout using RelativeLayout to anchor the Bottom Navigation at the bottom and overlay floating notifications -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_skyblue">
 
-    <!-- Header Navigation Bar: Contains Brand Name, Sync Indicator and Menu -->
     <RelativeLayout
         android:id="@+id/navBar"
         android:layout_width="match_parent"
@@ -16,7 +14,6 @@
         android:padding="16dp"
         android:background="@android:color/transparent">
 
-        <!-- Application Title -->
         <TextView
             android:id="@+id/txtAppName"
             android:layout_width="wrap_content"
@@ -28,7 +25,6 @@
             android:textSize="26sp"
             android:textStyle="bold" />
 
-        <!-- Synchronization / Offline status indicator -->
         <LinearLayout
             android:id="@+id/layoutSyncStatus"
             android:layout_width="wrap_content"
@@ -61,7 +57,6 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Dropdown Menu trigger icon -->
         <ImageView
             android:id="@+id/imgDropdown"
             android:layout_width="28dp"
@@ -71,10 +66,8 @@
             android:contentDescription="Menu"
             android:src="@drawable/ic_dropdown"
             app:tint="@color/white" />
-
     </RelativeLayout>
 
-    <!-- Scrollable main dashboard content area -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/weatherScrollView"
         android:layout_width="match_parent"
@@ -90,17 +83,6 @@
             android:padding="16dp"
             android:gravity="center_horizontal">
 
-            <!-- Search Bar for discovering other locations -->
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/searchBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:background="@drawable/search_bar_bg"
-                app:iconifiedByDefault="false"
-                app:queryHint="Search city or area..." />
-
-            <!-- Core Weather Data for the Current Location -->
             <LinearLayout
                 android:id="@+id/layoutCurrentWeather"
                 android:layout_width="match_parent"
@@ -108,69 +90,133 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <!-- Primary Weather Icon representing current condition -->
                 <ImageView
                     android:id="@+id/imgWeatherIcon"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:src="@drawable/ic_cloud"
-                    android:layout_marginBottom="8dp"
-                    android:contentDescription="Weather Icon" />
+                    android:layout_marginBottom="8dp" />
 
-                <!-- Location Name -->
                 <TextView
                     android:id="@+id/txtLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Johannesburg"
+                    android:text="Loading..."
                     android:textColor="@color/white"
-                    android:textSize="32sp"
+                    android:textSize="28sp"
                     android:textStyle="bold" />
 
-                <!-- Main Current Temperature display -->
                 <TextView
                     android:id="@+id/txtTemperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="24°C"
+                    android:text="--"
                     android:textColor="@color/white"
-                    android:textSize="80sp"
+                    android:textSize="72sp"
                     android:textStyle="bold" />
 
-                <!-- Secondary Feels-like Temperature metric -->
-                <TextView
-                    android:id="@+id/txtFeelsLike"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Feels like 26°C"
-                    android:textColor="#CCFFFFFF"
-                    android:textSize="18sp"
-                    android:layout_marginBottom="4dp" />
-
-                <!-- Weather Condition Description -->
                 <TextView
                     android:id="@+id/txtCondition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Partly Cloudy"
+                    android:text="--"
                     android:textColor="@color/white"
-                    android:textSize="22sp"
-                    android:layout_marginBottom="32dp" />
+                    android:textSize="20sp" />
 
+                <TextView
+                    android:id="@+id/txtFeelsLike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Feels like --"
+                    android:textColor="#CCFFFFFF"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginBottom="24dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Humidity" android:textColor="#B3FFFFFF" android:textSize="12sp"/>
+                        <TextView android:id="@+id/txtHumidity" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="@color/white" android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Wind" android:textColor="#B3FFFFFF" android:textSize="12sp"/>
+                        <TextView android:id="@+id/txtWindSpeed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="@color/white" android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Visibility" android:textColor="#B3FFFFFF" android:textSize="12sp"/>
+                        <TextView android:id="@+id/txtVisibility" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="@color/white" android:textStyle="bold"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtLastUpdated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Last updated: --"
+                    android:textColor="#80FFFFFF"
+                    android:textSize="10sp"
+                    android:layout_marginBottom="24dp"/>
             </LinearLayout>
 
-            <!-- Dynamic Forecast Snippet Container (Swaps Hourly/Daily based on selection) -->
-            <FrameLayout
-                android:id="@+id/fragmentContainer"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="200dp" />
+                android:text="Hourly Forecast"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_marginBottom="24dp">
+                <LinearLayout
+                    android:id="@+id/layoutHourlyForecast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5-Day Forecast"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+            <LinearLayout
+                android:id="@+id/layoutDailyForecast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#1AFFFFFF"
+                android:padding="8dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Floating Notification Indicator (Overlay Card) -->
-    <!-- Initially hidden (gone), this card will pop up on top for 3 seconds via code -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardNotificationIndicator"
         android:layout_width="match_parent"
@@ -180,33 +226,28 @@
         app:cardCornerRadius="16dp"
         app:cardBackgroundColor="#E6FFFFFF"
         app:cardElevation="12dp">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="16dp"
             android:gravity="center_vertical">
-
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_notifications"
                 app:tint="@color/blue_700" />
-
             <TextView
                 android:id="@+id/txtNotificationMsg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:text="New weather update: Rain expected soon."
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Bottom Navigation Bar: Fixed at the bottom for persistent access -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
@@ -217,5 +258,4 @@
         app:itemTextColor="@color/white"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
-
 </RelativeLayout>

@@ -5,11 +5,19 @@
         android:icon="@drawable/ic_home"
         android:title="Home" />
     <item
-        android:id="@+id/nav_forecast"
-        android:icon="@drawable/ic_cloud"
-        android:title="Forecast" />
+        android:id="@+id/nav_hourly"
+        android:icon="@drawable/ic_hourly"
+        android:title="Hourly" />
     <item
-        android:id="@+id/nav_settings"
-        android:icon="@drawable/ic_settings"
-        android:title="Settings" />
+        android:id="@+id/nav_daily"
+        android:icon="@drawable/ic_daily"
+        android:title="Daily" />
+    <item
+        android:id="@+id/nav_search"
+        android:icon="@drawable/ic_search"
+        android:title="Search" />
+    <item
+        android:id="@+id/nav_notification"
+        android:icon="@drawable/ic_notifications"
+        android:title="Alerts" />
 </menu>

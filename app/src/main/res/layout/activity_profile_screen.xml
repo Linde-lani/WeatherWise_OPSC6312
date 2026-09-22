@@ -1,11 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Root layout using RelativeLayout to anchor the Bottom Navigation at the bottom and overlay floating notifications -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginScreen"
-    android:orientation="vertical">
+    android:background="@drawable/bg_skyblue">
 
-</LinearLayout>
+    <!-- Header Navigation Bar: Contains Brand Name, Sync Indicator and Menu -->
+    <RelativeLayout
+        android:id="@+id/navBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@android:color/transparent">
+
+         <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Profile"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"/>
+
+
+
+        <!-- Dropdown Menu trigger icon -->
+        <ImageView
+            android:id="@+id/imgDropdown"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="Menu"
+            android:src="@drawable/ic_dropdown"
+            app:tint="@color/white" />
+
+    </RelativeLayout>
+
+    <!-- Scrollable main dashboard content area -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/weatherScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/navBar"
+        android:layout_above="@+id/bottomNavigation"
+        android:fillViewport="true">
+
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                       android:padding="24dp">
+
+                        <ImageView
+                           android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:src="@drawable/ic_profile"
+                            app:tint="@color/white" />
+
+                        <TextView
+                            android:id="@+id/txtProfileName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="WeatherWise User"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="user@example.com"
+                            android:textColor="#E6FFFFFF"
+                            android:textSize="16sp" />
+
+                       <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnEditProfile"
+                           android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                           android:layout_marginTop="32dp"
+                            android:text="Edit Profile"
+                            android:textColor="@color/blue_700"
+                           app:backgroundTint="@color/white"
+                            app:cornerRadius="12dp" />
+                </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Floating Notification Indicator (Overlay Card) -->
+    <!-- Initially hidden (gone), this card will pop up on top for 3 seconds via code -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardNotificationIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:visibility="gone"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="#E6FFFFFF"
+        app:cardElevation="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_notifications"
+                app:tint="@color/blue_700" />
+
+            <TextView
+                android:id="@+id/txtNotificationMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="New weather update: Rain expected soon."
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Bottom Navigation Bar: Fixed at the bottom for persistent access -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#1AFFFFFF"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu" />
+
+</RelativeLayout>

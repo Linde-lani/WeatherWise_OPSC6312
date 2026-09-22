@@ -131,7 +131,8 @@
             android:text="Already have an account? Log in"
             android:textColor="@color/blue_700"
             android:textStyle="bold"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:onClick="log_in"/>
 
     </LinearLayout>
 </ScrollView>

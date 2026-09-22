@@ -112,7 +112,8 @@
             android:text="Dont have an account? Register"
             android:textColor="@color/blue_700"
             android:textStyle="bold"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:onClick="register"/>
 
     </LinearLayout>
 </ScrollView>
