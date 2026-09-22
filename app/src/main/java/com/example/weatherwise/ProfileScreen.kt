@@ -2,6 +2,7 @@ package com.example.weatherwise
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,9 +21,9 @@ class ProfileScreen : AppCompatActivity() {
             insets
         }
         // Initialize back button
-        val btnBack = findViewById<ImageView>(R.id.imgDropdown) // Currently using the dropdown as a placeholder icon in your layout
-        // Note: You added a TextView "My Profile" but didn't explicitly add a back button in the XML snippet provided.
-        // I will update the XML to include a proper back button.
+        val btnBack = findViewById<ImageButton>(R.id.btnBack)
+
+        btnBack.setOnClickListener { finish() }
 
         // Initialize Edit Profile Button
         val btnEditProfile = findViewById<MaterialButton>(R.id.btnEditProfile)
