@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout for a single day entry in the daily forecast list -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:gravity="center_vertical">
+
+    <!-- Day of the week -->
+    <TextView
+        android:id="@+id/txtDayName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Monday"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <!-- Weather icon for the day -->
+    <ImageView
+        android:id="@+id/imgDayIcon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/ic_cloud"
+        android:contentDescription="Daily Weather Icon"
+        android:layout_marginEnd="16dp" />
+
+    <!-- High temperature -->
+    <TextView
+        android:id="@+id/txtDayHigh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="28°"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="8dp" />
+
+    <!-- Low temperature -->
+    <TextView
+        android:id="@+id/txtDayLow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18°"
+        android:textColor="#B3FFFFFF"
+        android:textSize="16sp" />
+
+</LinearLayout>

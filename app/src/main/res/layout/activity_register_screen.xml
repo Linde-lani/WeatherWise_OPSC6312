@@ -51,8 +51,7 @@
             android:layout_marginBottom="16dp"
             android:hint="      Username"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            app:startIconDrawable="@drawable/ic_use"
-            app:startIconPadding="16dp">
+            app:startIconDrawable="@drawable/ic_use">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtUsername"
@@ -68,8 +67,7 @@
             android:layout_marginBottom="16dp"
             android:hint="      Email"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            app:startIconDrawable="@drawable/ic_email"
-            app:startIconPadding="16dp">
+            app:startIconDrawable="@drawable/ic_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtEmail"
@@ -84,12 +82,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:hint="      Password"
-
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             app:startIconDrawable="@drawable/ic_lock"
-            app:endIconMode="password_toggle"
-
-            app:startIconPadding="16dp">
+            app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtPassword"
@@ -104,11 +99,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:hint="      Confirm Password"
-
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             app:startIconDrawable="@drawable/ic_lock_check"
-            app:endIconMode="password_toggle"
-            app:startIconPadding="16dp">
+            app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtConfirmPassword"

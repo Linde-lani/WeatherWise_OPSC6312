@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout for the Hourly Forecast snippet on the Dashboard -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hourly Forecast"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginBottom="12dp" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Reusing the hourly item layout we created earlier -->
+            <include layout="@layout/item_hourly_forecast" />
+            <include layout="@layout/item_hourly_forecast" />
+            <include layout="@layout/item_hourly_forecast" />
+            <include layout="@layout/item_hourly_forecast" />
+            <include layout="@layout/item_hourly_forecast" />
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>

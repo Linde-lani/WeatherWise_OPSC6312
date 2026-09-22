@@ -1,7 +1,9 @@
 package com.example.weatherwise
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -25,7 +27,15 @@ class RegisterScreen : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+//        val signupButton = findViewById<Button>(R.id.btnRegister)
+//        signupButton.setOnClickListener {
+//            val intent = Intent(this, LoginScreen::class.java)
+//            startActivity(intent)
+//        }
     }
+
+
+
     fun send_info(view: View)
     {
         //collecting the user's input
@@ -33,7 +43,7 @@ class RegisterScreen : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.edtEmail).text.toString();
         val password = findViewById<EditText>(R.id.edtPassword).text.toString();
 
-        //send the info to the api_database table
+        //send the info to the weather_wise_users table
         // -------------------------------
 // HOW TO Insert, put this in a function or in the main under the override fun Oncreate
 // -------------------------------
