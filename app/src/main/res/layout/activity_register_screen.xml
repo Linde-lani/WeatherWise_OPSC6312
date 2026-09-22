@@ -51,7 +51,8 @@
             android:layout_marginBottom="16dp"
             android:hint="      Username"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            app:startIconDrawable="@drawable/ic_use">
+            app:startIconDrawable="@drawable/ic_use"
+            app:startIconPadding="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtUsername"
@@ -67,7 +68,8 @@
             android:layout_marginBottom="16dp"
             android:hint="      Email"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            app:startIconDrawable="@drawable/ic_email">
+            app:startIconDrawable="@drawable/ic_email"
+            app:startIconPadding="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtEmail"
@@ -82,9 +84,12 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:hint="      Password"
+
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             app:startIconDrawable="@drawable/ic_lock"
-            app:endIconMode="password_toggle">
+            app:endIconMode="password_toggle"
+
+            app:startIconPadding="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtPassword"
@@ -99,9 +104,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:hint="      Confirm Password"
+
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             app:startIconDrawable="@drawable/ic_lock_check"
-            app:endIconMode="password_toggle">
+            app:endIconMode="password_toggle"
+            app:startIconPadding="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtConfirmPassword"
@@ -119,7 +126,8 @@
             android:textSize="18sp"
             android:textAllCaps="false"
             app:cornerRadius="12dp"
-            app:backgroundTint="@color/blue_700" />
+            app:backgroundTint="@color/blue_700"
+            android:onClick="send_info"/>
 
         <!-- Login Redirect -->
         <TextView

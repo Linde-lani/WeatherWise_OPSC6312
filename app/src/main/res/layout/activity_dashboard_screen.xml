@@ -1,124 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Root layout using RelativeLayout to anchor the Bottom Navigation at the bottom and overlay floating notifications -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_skyblue"
-    android:fillViewport="true">
+    android:background="@drawable/bg_skyblue">
 
-    <LinearLayout
+    <!-- Header Navigation Bar: Contains Brand Name, Sync Indicator and Menu -->
+    <RelativeLayout
+        android:id="@+id/navBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="@android:color/transparent">
 
-        <!-- App Logo -->
+        <!-- Application Title -->
+        <TextView
+            android:id="@+id/txtAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="WeatherWise"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <!-- Synchronization / Offline status indicator -->
+        <LinearLayout
+            android:id="@+id/layoutSyncStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/imgDropdown"
+            android:layout_marginEnd="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="@drawable/btn_bg"
+            android:backgroundTint="#20FFFFFF"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp">
+
+            <ImageView
+                android:id="@+id/imgSyncStatus"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_lock_check"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/txtSyncStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Synced"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Dropdown Menu trigger icon -->
         <ImageView
-            android:id="@+id/imgLogo"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_cloud"
-            android:contentDescription="@string/app_name"
-            android:layout_marginBottom="8dp" />
+            android:id="@+id/imgDropdown"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="Menu"
+            android:src="@drawable/ic_dropdown"
+            app:tint="@color/white" />
 
+    </RelativeLayout>
 
-        
-        <!-- Location and Temperature -->
-        <TextView
-            android:id="@+id/txtLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Johannesburg"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_gravity="center" />
+    <!-- Scrollable main dashboard content area -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/weatherScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/navBar"
+        android:layout_above="@+id/bottomNavigation"
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/txtTemperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="24°C"
-            android:textSize="48sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Weather Condition -->
-        <TextView
-            android:id="@+id/txtCondition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Partly Cloudy"
-            android:textSize="18sp"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:layout_marginBottom="24dp" />
-
-        <!-- Forecast Cards -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            app:cardCornerRadius="12dp"
-            app:cardBackgroundColor="@color/white">
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center_horizontal">
 
-            <LinearLayout
+            <!-- Search Bar for discovering other locations -->
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="12dp"
-                android:background="@color/blue_200">
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/search_bar_bg"
+                app:iconifiedByDefault="false"
+                app:queryHint="Search city or area..." />
 
+            <!-- Core Weather Data for the Current Location -->
+            <LinearLayout
+                android:id="@+id/layoutCurrentWeather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <!-- Primary Weather Icon representing current condition -->
                 <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:id="@+id/imgWeatherIcon"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:src="@drawable/ic_cloud"
+                    android:layout_marginBottom="8dp"
                     android:contentDescription="Weather Icon" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <!-- Location Name -->
+                <TextView
+                    android:id="@+id/txtLocation"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingStart="12dp"
-                    android:background="@color/blue_200">
+                    android:text="Johannesburg"
+                    android:textColor="@color/white"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:text="Monday"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_width="match_parent"/>
+                <!-- Main Current Temperature display -->
+                <TextView
+                    android:id="@+id/txtTemperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="24°C"
+                    android:textColor="@color/white"
+                    android:textSize="80sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:text="High: 26°C  Low: 15°C"
-                        android:textSize="14sp"
-                        android:textColor="@color/black"
-                        android:layout_gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
-                </LinearLayout>
+                <!-- Secondary Feels-like Temperature metric -->
+                <TextView
+                    android:id="@+id/txtFeelsLike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Feels like 26°C"
+                    android:textColor="#CCFFFFFF"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="4dp" />
+
+                <!-- Weather Condition Description -->
+                <TextView
+                    android:id="@+id/txtCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Partly Cloudy"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:layout_marginBottom="32dp" />
+
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
-        <!-- Add more forecast cards dynamically in Kotlin -->
+            <!-- Dynamic Forecast Snippet Container (Swaps Hourly/Daily based on selection) -->
+            <FrameLayout
+                android:id="@+id/fragmentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="200dp" />
 
-        <!-- Bottom Navigation -->
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigation"
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Floating Notification Indicator (Overlay Card) -->
+    <!-- Initially hidden (gone), this card will pop up on top for 3 seconds via code -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardNotificationIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:visibility="gone"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="#E6FFFFFF"
+        app:cardElevation="12dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="260dp"
-            app:menu="@menu/bottom_nav_menu"
-            app:itemIconTint="@color/white"
-            app:itemTextColor="@color/white"
-            app:elevation="30dp"
-            app:cornerRadius="12dp"
-            android:background="@color/blue_500" />
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
 
-    </LinearLayout>
-</ScrollView>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_notifications"
+                app:tint="@color/blue_700" />
+
+            <TextView
+                android:id="@+id/txtNotificationMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="New weather update: Rain expected soon."
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Bottom Navigation Bar: Fixed at the bottom for persistent access -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#1AFFFFFF"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu" />
+
+</RelativeLayout>
