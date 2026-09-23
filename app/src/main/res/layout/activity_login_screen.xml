@@ -44,8 +44,6 @@
             android:textColor="@color/blue_700"
             android:layout_marginBottom="32dp"/>
 
-
-
         <!-- Email Input -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -91,8 +89,7 @@
             android:textStyle="bold"
             android:padding="8dp" />
 
-
-        <!-- Register Button -->
+        <!-- Login Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"

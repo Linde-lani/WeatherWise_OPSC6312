@@ -13,19 +13,24 @@ class WelcomeScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_welcome_screen)
+
+        // Handle window insets for edge-to-edge display
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        val registerButton = findViewById<Button>(R.id.registerbtn)
-        registerButton.setOnClickListener {
+        // Initialize Register Button and set click listener to redirect to RegisterScreen
+        val registerBtn = findViewById<Button>(R.id.registerbtn)
+        registerBtn.setOnClickListener {
             val intent = Intent(this, RegisterScreen::class.java)
             startActivity(intent)
         }
-        val loginButton = findViewById<Button>(R.id.loginbtn)
-        loginButton.setOnClickListener {
+
+        // Initialize Login Button and set click listener to redirect to LoginScreen
+        val loginBtn = findViewById<Button>(R.id.loginbtn)
+        loginBtn.setOnClickListener {
             val intent = Intent(this, LoginScreen::class.java)
             startActivity(intent)
         }

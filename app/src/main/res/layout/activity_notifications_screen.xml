@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Notification Screen layout with a scrollable list of messages and multi-delete functionality -->
+<!-- Notification Screen with 3s long-press delete and Bottom Navigation -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,7 +9,7 @@
     android:background="@drawable/bg_skyblue"
     tools:context=".NotificationsScreen">
 
-    <!-- Header with Back Button and Delete Action -->
+    <!-- Header with Back Button and Dynamic Delete Action -->
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -36,6 +36,7 @@
             android:textSize="22sp"
             android:textStyle="bold" />
 
+        <!-- Trash icon for deleting selected notifications -->
         <ImageButton
             android:id="@+id/btnDelete"
             android:layout_width="48dp"
@@ -49,16 +50,17 @@
             tools:visibility="visible" />
     </RelativeLayout>
 
-    <!-- RecyclerView to display the list of notifications -->
+    <!-- RecyclerView acting as the notification storage panel -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNotifications"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/bottomNavigation"
         android:layout_below="@id/header"
         android:padding="8dp"
         android:clipToPadding="false" />
 
-    <!-- Empty State -->
+    <!-- Empty State Placeholder -->
     <LinearLayout
         android:id="@+id/layoutEmpty"
         android:layout_width="wrap_content"
@@ -67,20 +69,29 @@
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="gone">
-
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/ic_notifications"
             app:tint="#80FFFFFF" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="No notifications yet"
+            android:text="All caught up!"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#1AFFFFFF"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu" />
 
 </RelativeLayout>

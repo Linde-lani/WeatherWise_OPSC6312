@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Root layout using RelativeLayout to anchor the Bottom Navigation at the bottom and overlay floating notifications -->
+<!-- Profile Screen Layout with a back button and edit profile option -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_skyblue">
 
-    <!-- Header Navigation Bar: Contains Brand Name, Sync Indicator and Menu -->
+    <!-- Header Navigation Bar -->
     <RelativeLayout
         android:id="@+id/navBar"
         android:layout_width="match_parent"
@@ -20,21 +20,23 @@
             android:id="@+id/btnBack"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_backbtn"
             android:contentDescription="Back"
             app:tint="@color/white" />
 
-         <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="My Profile"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="10dp"/>
-
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/btnBack"
+            android:layout_marginStart="16dp"
+            android:text="My Profile"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
         <!-- Dropdown Menu trigger icon -->
         <ImageView
@@ -49,100 +51,62 @@
 
     </RelativeLayout>
 
-    <!-- Scrollable main dashboard content area -->
+    <!-- Scrollable main profile content -->
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/weatherScrollView"
+        android:id="@+id/profileScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/navBar"
         android:layout_above="@+id/bottomNavigation"
         android:fillViewport="true">
 
-
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical"
-                       android:padding="24dp">
-
-                        <ImageView
-                           android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:src="@drawable/ic_profile"
-                            app:tint="@color/white" />
-
-                        <TextView
-                            android:id="@+id/txtProfileName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:text="WeatherWise User"
-                            android:textColor="@color/white"
-                            android:textSize="24sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="user@example.com"
-                            android:textColor="#E6FFFFFF"
-                            android:textSize="16sp" />
-
-                       <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnEditProfile"
-                           android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                           android:layout_marginTop="32dp"
-                            android:text="Edit Profile"
-                            android:textColor="@color/blue_700"
-                           app:backgroundTint="@color/white"
-                            app:cornerRadius="12dp" />
-                </LinearLayout>
-
-
-    </androidx.core.widget.NestedScrollView>
-
-    <!-- Floating Notification Indicator (Overlay Card) -->
-    <!-- Initially hidden (gone), this card will pop up on top for 3 seconds via code -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardNotificationIndicator"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:visibility="gone"
-        app:cardCornerRadius="16dp"
-        app:cardBackgroundColor="#E6FFFFFF"
-        app:cardElevation="12dp">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp"
-            android:gravity="center_vertical">
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="24dp">
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_notifications"
-                app:tint="@color/blue_700" />
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_profile"
+                app:tint="@color/white" />
 
             <TextView
-                android:id="@+id/txtNotificationMsg"
+                android:id="@+id/txtProfileName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="New weather update: Rain expected soon."
-                android:textColor="@color/black"
-                android:textSize="14sp"
+                android:layout_marginTop="16dp"
+                android:text="WeatherWise User"
+                android:textColor="@color/white"
+                android:textSize="24sp"
                 android:textStyle="bold" />
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
 
-    <!-- Bottom Navigation Bar: Fixed at the bottom for persistent access -->
+            <TextView
+                android:id="@+id/txtProfileEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="user@example.com"
+                android:textColor="#E6FFFFFF"
+                android:textSize="16sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:text="Edit Profile"
+                android:textColor="@color/blue_700"
+                android:textStyle="bold"
+                app:backgroundTint="@color/white"
+                app:cornerRadius="12dp" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Navigation Bar -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"

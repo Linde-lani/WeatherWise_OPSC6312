@@ -1,9 +1,9 @@
 package com.example.weatherwise
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -13,122 +13,151 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.widget.NestedScrollView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.card.MaterialCardView
+import com.google.android.material.button.MaterialButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * Main dashboard screen displaying real-time weather, navigation, and saved favorite locations.
+ */
 class DashboardScreen : AppCompatActivity() {
 
-    // AccuWeather API Configuration
     private val API_KEY = "zpka_8d09c7fe1d8a49c3a0bd5c87de1a18e3_5e9eabd2"
-    private val DEFAULT_LOCATION_KEY = "306633" // Johannesburg, South Africa
-
-    // Fragments for dynamic forecast display
+    
     private val hourlyFragment = HourlyForecastFragment()
     private val dailyFragment = DailyForecastFragment()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_dashboard_screen)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        // Initialize Dropdown Menu
-        setupDropdownMenu()
 
-        // Setup Bottom Navigation
+        setupHeaderMenu()
         setupBottomNavigation()
-
-        // Handle Sync Indicator Click (Manual Refresh)
-        findViewById<LinearLayout>(R.id.layoutSyncStatus).setOnClickListener {
-            refreshWeatherData()
+        
+        findViewById<MaterialButton>(R.id.btnGamificationIcon).setOnClickListener {
+            startActivity(Intent(this, GamificationActivity::class.java))
         }
 
-        // 1. Fetch real weather data on launch
-        refreshWeatherData()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.hourlyContainer, hourlyFragment)
+            .replace(R.id.dailyContainer, dailyFragment)
+            .commit()
     }
 
-    /**
-     * Fetches current conditions from AccuWeather API and updates the UI.
-     */
-    private fun refreshWeatherData() {
-        val txtSyncStatus = findViewById<TextView>(R.id.txtSyncStatus)
+    override fun onResume() {
+        super.onResume()
+        loadDefaultLocationWeather()
+        loadSavedLocationsGrid()
+    }
 
-        // Update sync UI state
-        txtSyncStatus.text = "Syncing..."
+    private fun loadDefaultLocationWeather() {
+        val sharedPrefs = getSharedPreferences("WeatherWisePrefs", Context.MODE_PRIVATE)
+        val defaultKey = sharedPrefs.getString("default_location_key", "306633") ?: "306633"
+        val defaultName = sharedPrefs.getString("default_location_name", "Johannesburg") ?: "Johannesburg"
 
-        WeatherServiceClient.api.getCurrentConditions(DEFAULT_LOCATION_KEY, API_KEY)
+        val txtLocation = findViewById<TextView>(R.id.txtLocation)
+        val txtTemperature = findViewById<TextView>(R.id.txtTemperature)
+        val txtFeelsLike = findViewById<TextView>(R.id.txtFeelsLike)
+        val txtCondition = findViewById<TextView>(R.id.txtCondition)
+
+        txtLocation.text = defaultName
+
+        WeatherServiceClient.api.getCurrentConditions(defaultKey, API_KEY)
             .enqueue(object : Callback<List<CurrentCondition>> {
                 override fun onResponse(call: Call<List<CurrentCondition>>, response: Response<List<CurrentCondition>>) {
-                    val conditions = response.body()
-                    if (response.isSuccessful && !conditions.isNullOrEmpty()) {
-                        updateWeatherUI(conditions[0])
-                        txtSyncStatus.text = "Synced"
-                        showFloatingNotification("Dashboard updated with real-time data.")
-                    } else {
-                        handleApiError("Sync failed: ${response.message()}")
+                    if (response.isSuccessful && !response.body().isNullOrEmpty()) {
+                        val current = response.body()!![0]
+                        txtTemperature.text = "${current.temperature.metric.value.toInt()}°C"
+                        txtCondition.text = current.weatherText
+                        txtFeelsLike.text = "Feels like ${current.realFeel.metric.value.toInt()}°C"
                     }
                 }
-
-                override fun onFailure(call: Call<List<CurrentCondition>>, t: Throwable) {
-                    handleApiError("Check internet connection.")
-                }
+                override fun onFailure(call: Call<List<CurrentCondition>>, t: Throwable) {}
             })
     }
 
-    /**
-     * Updates the main weather elements with real data from the API response.
-     */
-    private fun updateWeatherUI(condition: CurrentCondition) {
-        val txtTemp = findViewById<TextView>(R.id.txtTemperature)
-        val txtFeelsLike = findViewById<TextView>(R.id.txtFeelsLike)
-        val txtCondition = findViewById<TextView>(R.id.txtCondition)
-        val imgIcon = findViewById<ImageView>(R.id.imgWeatherIcon)
+    private fun loadSavedLocationsGrid() {
+        val layoutSavedLocations = findViewById<LinearLayout>(R.id.layoutSavedLocations)
+        layoutSavedLocations.removeAllViews()
 
-        // Set Temperature values
-        txtTemp.text = "${condition.temperature.metric.value.toInt()}°C"
-        // Note: AccuWeather CurrentCondition doesn't always have RealFeel at top level unless requested with details=true.
-        // The API interface uses details=true by default. However, let's verify if RealFeel is present.
-        // Assuming CurrentCondition model is updated to match.
-        txtFeelsLike.text = "Feels like ${condition.realFeel.metric.value.toInt()}°C"
-        txtCondition.text = condition.weatherText
-
-        // Map AccuWeather icon ID to our local assets (Simple mapping)
-        val iconRes = when(condition.weatherIcon) {
-            in 1..5 -> R.drawable.ic_sunny        // Sunny/Mostly Sunny
-            in 6..11 -> R.drawable.ic_cloudy      // Cloudy/Broken Clouds
-            in 12..18 -> R.drawable.ic_cloud      // Rain/Showers
-            else -> R.drawable.ic_cloud           // Fallback
+        val sharedPrefs = getSharedPreferences("WeatherWisePrefs", Context.MODE_PRIVATE)
+        val savedCitiesString = sharedPrefs.getString("saved_favorites_list", "306633:Johannesburg,305448:Cape Town,305607:Durban") ?: ""
+        
+        val savedCities = mutableListOf<Pair<String, String>>()
+        if (savedCitiesString.isNotEmpty()) {
+            savedCitiesString.split(",").forEach {
+                val parts = it.split(":")
+                if (parts.size == 2) {
+                    savedCities.add(Pair(parts[0], parts[1]))
+                }
+            }
         }
-        imgIcon.setImageResource(iconRes)
+
+        val inflater = LayoutInflater.from(this)
+        for (city in savedCities) {
+            val cardView = inflater.inflate(R.layout.item_hourly_forecast, layoutSavedLocations, false)
+            val txtName = cardView.findViewById<TextView>(R.id.txtHourlyTime)
+            val txtTemp = cardView.findViewById<TextView>(R.id.txtHourlyTemp)
+            
+            txtName.text = city.second
+            txtTemp.text = "--°"
+            
+            WeatherServiceClient.api.getCurrentConditions(city.first, API_KEY)
+                .enqueue(object : Callback<List<CurrentCondition>> {
+                    override fun onResponse(call: Call<List<CurrentCondition>>, response: Response<List<CurrentCondition>>) {
+                        if (response.isSuccessful && !response.body().isNullOrEmpty()) {
+                            txtTemp.text = "${response.body()!![0].temperature.metric.value.toInt()}°C"
+                        }
+                    }
+                    override fun onFailure(call: Call<List<CurrentCondition>>, t: Throwable) {}
+                })
+            
+            cardView.setOnClickListener {
+                with(sharedPrefs.edit()) {
+                    putString("default_location_key", city.first)
+                    putString("default_location_name", city.second)
+                    apply()
+                }
+                loadDefaultLocationWeather()
+                
+                // Triggers sub fragment weather synchronizations seamlessly
+                // Fixed: using supportFragmentManager inside Activity context instead of parentFragmentManager
+                if (hourlyFragment.isAdded) {
+                    supportFragmentManager.beginTransaction().detach(hourlyFragment).attach(hourlyFragment).commit()
+                }
+                if (dailyFragment.isAdded) {
+                    dailyFragment.updateLocation(city.first)
+                }
+            }
+            
+            layoutSavedLocations.addView(cardView)
+        }
     }
 
-    private fun handleApiError(message: String) {
-        findViewById<TextView>(R.id.txtSyncStatus).text = "Offline"
-        showFloatingNotification(message)
-    }
-
-    private fun setupDropdownMenu() {
+    private fun setupHeaderMenu() {
         val imgDropdown = findViewById<ImageView>(R.id.imgDropdown)
         imgDropdown.setOnClickListener { view ->
             val popup = PopupMenu(this, view)
-            // If dashboard_dropdown doesn't exist, we might need to create it or use another one
-            try {
-                popup.menuInflater.inflate(R.menu.dashboard_dropdown, popup.menu)
-            } catch (e: Exception) {
-                // Fallback to a basic menu or log error if it doesn't exist
-            }
+            popup.menuInflater.inflate(R.menu.dashboard_dropdown, popup.menu)
             popup.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
-                    R.id.action_profile -> { startActivity(Intent(this, ProfileScreen::class.java)); true }
-                    R.id.action_settings -> { startActivity(Intent(this, SettingsScreen::class.java)); true }
+                    R.id.action_profile -> {
+                        startActivity(Intent(this, ProfileScreen::class.java))
+                        true
+                    }
+                    R.id.action_settings -> {
+                        startActivity(Intent(this, SettingsScreen::class.java))
+                        true
+                    }
                     R.id.action_logout -> {
                         val intent = Intent(this, LoginScreen::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -144,43 +173,29 @@ class DashboardScreen : AppCompatActivity() {
 
     private fun setupBottomNavigation() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
-        val scrollView = findViewById<NestedScrollView>(R.id.weatherScrollView)
+        bottomNav.selectedItemId = R.id.nav_home
 
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_home -> {
-                    scrollView?.smoothScrollTo(0, 0)
-                    true
-                }
-                // Updated IDs to match bottom_nav_menu.xml if needed, but the current code uses specific ones.
-                // I will update bottom_nav_menu.xml to match these IDs.
-                R.id.nav_hourly -> {
-                    // Using a fragment container - need to ensure it exists in activity_dashboard_screen.xml
-                    // Since it's not in the provided XML, I'll assume it should be added or use another way.
-                    // For now, let's keep it as is and I will check the layout.
-                    true
-                }
-                R.id.nav_daily -> {
-                    true
-                }
+                R.id.nav_home -> true
                 R.id.nav_search -> {
                     startActivity(Intent(this, SearchScreen::class.java))
                     true
                 }
                 R.id.nav_notification -> {
-                    startActivity(Intent( this, NotificationsScreen::class.java))
+                    startActivity(Intent(this, NotificationsScreen::class.java))
+                    true
+                }
+                R.id.nav_profile -> {
+                    startActivity(Intent(this, ProfileScreen::class.java))
+                    true
+                }
+                R.id.nav_settings -> {
+                    startActivity(Intent(this, SettingsScreen::class.java))
                     true
                 }
                 else -> false
             }
         }
-    }
-
-    private fun showFloatingNotification(message: String) {
-        val card = findViewById<MaterialCardView>(R.id.cardNotificationIndicator)
-        val text = findViewById<TextView>(R.id.txtNotificationMsg)
-        text.text = message
-        card.visibility = View.VISIBLE
-        Handler(Looper.getMainLooper()).postDelayed({ card.visibility = View.GONE }, 3000)
     }
 }

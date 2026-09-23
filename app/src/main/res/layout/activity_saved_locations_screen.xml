@@ -1,53 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/bg_skyblue"
-    tools:context=".SavedLocationsScreen">
+    android:background="@drawable/bg_skyblue">
 
-    <!-- Header bar with back button -->
-    <LinearLayout
+
+
+    <!-- Header Navigation Bar: Contains Brand Name, Sync Indicator and Menu -->
+    <RelativeLayout
+        android:id="@+id/navBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="16dp">
-
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_backbtn"
-            android:contentDescription="Back"
-            app:tint="@color/white" />
+        android:padding="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Saved Locations"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:text="Settings"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginStart="16dp" />
-    </LinearLayout>
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
-    <!-- List container for saved locations -->
-    <ScrollView
+
+
+        <!-- Dropdown Menu trigger icon -->
+        <ImageView
+            android:id="@+id/imgDropdown"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="Menu"
+            android:src="@drawable/ic_dropdown"
+            app:tint="@color/white" />
+
+    </RelativeLayout>
+
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#1AFFFFFF"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu" />
 
-        <LinearLayout
-            android:id="@+id/layoutSavedLocationsList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp" />
-    </ScrollView>
 
-</LinearLayout>
+</RelativeLayout>

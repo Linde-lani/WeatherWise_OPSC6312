@@ -11,7 +11,7 @@ import retrofit2.http.Query
  * Interface defining the AccuWeather REST API endpoints.
  */
 interface AccuWeatherApi {
-
+    
     // Search for locations by city name
     @GET("locations/v1/cities/search")
     fun searchLocation(
@@ -49,7 +49,7 @@ interface AccuWeatherApi {
  */
 object WeatherServiceClient {
     private const val BASE_URL = "https://dataservice.accuweather.com/"
-
+    
     val api: AccuWeatherApi by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)

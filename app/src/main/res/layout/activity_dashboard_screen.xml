@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_skyblue">
 
+    <!-- Header Navigation Bar -->
     <RelativeLayout
         android:id="@+id/navBar"
         android:layout_width="match_parent"
@@ -22,8 +23,20 @@
             android:layout_centerVertical="true"
             android:text="WeatherWise"
             android:textColor="@color/white"
-            android:textSize="26sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
+
+        <!-- Gamification Level Trigger Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGamificationIcon"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/layoutSyncStatus"
+            android:layout_centerVertical="true"
+            android:text="🏆 Level"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
 
         <LinearLayout
             android:id="@+id/layoutSyncStatus"
@@ -68,6 +81,7 @@
             app:tint="@color/white" />
     </RelativeLayout>
 
+    <!-- Scrollable main dashboard content area -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/weatherScrollView"
         android:layout_width="match_parent"
@@ -83,6 +97,7 @@
             android:padding="16dp"
             android:gravity="center_horizontal">
 
+            <!-- Core Weather Data -->
             <LinearLayout
                 android:id="@+id/layoutCurrentWeather"
                 android:layout_width="match_parent"
@@ -94,125 +109,86 @@
                     android:id="@+id/imgWeatherIcon"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
-                    android:src="@drawable/ic_cloud"
-                    android:layout_marginBottom="8dp" />
+                    android:layout_marginBottom="8dp"
+                    android:contentDescription="Weather Icon" />
 
                 <TextView
                     android:id="@+id/txtLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Loading..."
                     android:textColor="@color/white"
-                    android:textSize="28sp"
-                    android:textStyle="bold" />
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    tools:text="Johannesburg" />
 
                 <TextView
                     android:id="@+id/txtTemperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="--"
                     android:textColor="@color/white"
                     android:textSize="72sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txtCondition"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="--"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textStyle="bold"
+                    tools:text="24°C" />
 
                 <TextView
                     android:id="@+id/txtFeelsLike"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Feels like --"
                     android:textColor="#CCFFFFFF"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="16dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_marginBottom="24dp">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Humidity" android:textColor="#B3FFFFFF" android:textSize="12sp"/>
-                        <TextView android:id="@+id/txtHumidity" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="@color/white" android:textStyle="bold"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Wind" android:textColor="#B3FFFFFF" android:textSize="12sp"/>
-                        <TextView android:id="@+id/txtWindSpeed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="@color/white" android:textStyle="bold"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Visibility" android:textColor="#B3FFFFFF" android:textSize="12sp"/>
-                        <TextView android:id="@+id/txtVisibility" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="@color/white" android:textStyle="bold"/>
-                    </LinearLayout>
-                </LinearLayout>
+                    android:textSize="18sp"
+                    android:layout_marginBottom="4dp"
+                    tools:text="Feels like 26°C" />
 
                 <TextView
-                    android:id="@+id/txtLastUpdated"
+                    android:id="@+id/txtCondition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Last updated: --"
-                    android:textColor="#80FFFFFF"
-                    android:textSize="10sp"
-                    android:layout_marginBottom="24dp"/>
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:layout_marginBottom="24dp"
+                    tools:text="Partly Cloudy" />
             </LinearLayout>
 
+            <!-- Saved / Favorite Locations Section -->
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hourly Forecast"
+                android:layout_gravity="start"
+                android:text="Saved Locations"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
+                android:textSize="16sp"
+                android:layout_marginBottom="12dp" />
+
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="none"
                 android:layout_marginBottom="24dp">
+
                 <LinearLayout
-                    android:id="@+id/layoutHourlyForecast"
+                    android:id="@+id/layoutSavedLocations"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" />
+                    android:orientation="horizontal">
+                    <!-- Square Cards dynamically added here -->
+                </LinearLayout>
             </HorizontalScrollView>
 
-            <TextView
+            <!-- Hourly Forecast Container -->
+            <FrameLayout
+                android:id="@+id/hourlyContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="5-Day Forecast"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
-            <LinearLayout
-                android:id="@+id/layoutDailyForecast"
+                android:minHeight="150dp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Daily Forecast Container -->
+            <FrameLayout
+                android:id="@+id/dailyContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="#1AFFFFFF"
-                android:padding="8dp" />
+                android:minHeight="200dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
@@ -226,17 +202,20 @@
         app:cardCornerRadius="16dp"
         app:cardBackgroundColor="#E6FFFFFF"
         app:cardElevation="12dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="16dp"
             android:gravity="center_vertical">
+
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_notifications"
                 app:tint="@color/blue_700" />
+
             <TextView
                 android:id="@+id/txtNotificationMsg"
                 android:layout_width="wrap_content"
@@ -258,4 +237,5 @@
         app:itemTextColor="@color/white"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
+
 </RelativeLayout>

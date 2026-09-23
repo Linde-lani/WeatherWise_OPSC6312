@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Professional Settings Screen Layout with a weather-themed gradient background -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -18,7 +17,6 @@
         android:layout_marginTop="10dp"
         android:background="@android:color/transparent">
 
-        <!-- Back button to return to the previous screen -->
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="48dp"
@@ -39,21 +37,8 @@
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold" />
-
-        <!-- Dropdown Menu trigger icon -->
-        <ImageView
-            android:id="@+id/imgDropdown"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:contentDescription="Menu"
-            android:src="@drawable/ic_dropdown"
-            app:tint="@color/white" />
-
     </RelativeLayout>
 
-    <!-- Settings Content: Scrollable list of preferences -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -67,11 +52,50 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- Units Section -->
+            <!-- Theme Mode -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Preferences"
+                android:text="Theme Mode"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginStart="8dp"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="#26FFFFFF"
+                app:strokeWidth="0dp"
+                android:layout_marginBottom="24dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Enable Dark Theme"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"/>
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchDarkTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        app:thumbTint="@color/white"
+                        app:trackTint="@color/blue_700"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Language Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="App Language"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="16sp"
@@ -90,125 +114,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="16dp">
 
-                    <RelativeLayout
-                        android:id="@+id/layoutTempUnit"
+                    <Button
+                        android:id="@+id/btnLangSesotho"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="12dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:background="?attr/selectableItemBackground">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Temperature Units"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"/>
-                        <TextView
-                            android:id="@+id/txtTempUnit"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Celsius (°C)"
-                            android:textColor="#B3FFFFFF"
-                            android:layout_alignParentEnd="true"/>
-                    </RelativeLayout>
+                        android:text="Change to Sesotho"
+                        android:textColor="@color/blue_700"
+                        app:backgroundTint="@color/white"
+                        android:layout_marginBottom="8dp"/>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#1AFFFFFF"
-                        android:layout_marginHorizontal="12dp"/>
-
-                    <RelativeLayout
-                        android:id="@+id/layoutWindUnit"
+                    <Button
+                        android:id="@+id/btnLangZulu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="12dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:background="?attr/selectableItemBackground">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Wind Speed"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"/>
-                        <TextView
-                            android:id="@+id/txtWindUnit"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="km/h"
-                            android:textColor="#B3FFFFFF"
-                            android:layout_alignParentEnd="true"/>
-                    </RelativeLayout>
-
+                        android:text="Change to isiZulu"
+                        android:textColor="@color/blue_700"
+                        app:backgroundTint="@color/white"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <!-- Notifications Section -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Alerts &amp; Notifications"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:layout_marginBottom="12dp"
-                android:layout_marginStart="8dp"/>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                app:cardBackgroundColor="#26FFFFFF"
-                app:strokeWidth="0dp"
-                android:layout_marginBottom="24dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="12dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Push Notifications"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"/>
-                        <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:id="@+id/switchNotifications"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:checked="true"
-                            app:thumbTint="@color/white"
-                            app:trackTint="@color/blue_700"/>
-                    </RelativeLayout>
-
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Version Info -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="WeatherWise version 1.0.0"
-                android:textColor="#80FFFFFF"
-                android:textSize="12sp"
-                android:gravity="center"
-                android:layout_marginTop="8dp"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Bottom Navigation Bar -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"

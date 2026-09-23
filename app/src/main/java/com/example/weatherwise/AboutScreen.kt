@@ -10,13 +10,17 @@ import androidx.core.view.WindowInsetsCompat
 class AboutScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Enable edge-to-edge for a modern, immersive feel
         enableEdgeToEdge()
         setContentView(R.layout.activity_about_screen)
+        
+        // Adjust layout padding to account for system status and navigation bars
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         // Initialize the back button and set its click listener
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
         btnBack.setOnClickListener {
