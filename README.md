@@ -14,3 +14,5 @@ WeatherWise is a modern Android weather tracking application designed to provide
 
 - **Multilingual Local Resources**: Comprehensive localization frameworks mapping English (`values/strings.xml`), isiZulu (`values-zu/strings.xml`), and Sesotho (`values-st/strings.xml`) keys dynamically across widgets.
 - **State Management & Shared Preferences**: Safe configuration stores managing localized defaults, primary locations, and quick delete mutations.
+  YouTube link
+  https://youtu.be/Nubh8U7oDGE?si=mGugTuphXdnR7M8Y 
