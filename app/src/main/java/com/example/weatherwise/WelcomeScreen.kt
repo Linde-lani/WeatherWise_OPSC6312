@@ -28,6 +28,8 @@ class WelcomeScreen : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+
         // Initialize Login Button and set click listener to redirect to LoginScreen
         val loginBtn = findViewById<Button>(R.id.loginbtn)
         loginBtn.setOnClickListener {

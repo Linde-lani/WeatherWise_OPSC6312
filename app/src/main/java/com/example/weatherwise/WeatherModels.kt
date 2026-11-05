@@ -16,6 +16,8 @@ data class Country(
     @SerializedName("LocalizedName") val name: String
 )
 
+
+
 /**
  * Data model for Current Conditions.
  */

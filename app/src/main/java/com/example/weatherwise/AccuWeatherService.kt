@@ -11,7 +11,9 @@ import retrofit2.http.Query
  * Interface defining the AccuWeather REST API endpoints.
  */
 interface AccuWeatherApi {
-    
+
+
+
     // Search for locations by city name
     @GET("locations/v1/cities/search")
     fun searchLocation(

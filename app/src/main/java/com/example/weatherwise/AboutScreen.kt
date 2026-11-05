@@ -29,6 +29,8 @@ class AboutScreen : AppCompatActivity() {
         }
     }
 
+
+
     override fun onResume() {
         super.onResume()
         ThemeUtils.applyBackground(findViewById(R.id.main), ThemeUtils.isDarkModeActive(this))

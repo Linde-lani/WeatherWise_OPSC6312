@@ -29,6 +29,8 @@ import kotlin.concurrent.thread
  */
 class EditProfileScreen : AppCompatActivity() {
 
+
+
     private lateinit var imgProfile: ImageView
 
     private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->

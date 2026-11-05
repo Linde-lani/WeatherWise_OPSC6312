@@ -72,6 +72,8 @@ class ProfileScreen : AppCompatActivity() {
             startActivity(Intent(this, EditProfileScreen::class.java))
         }
 
+
+
         // Setup Bottom Navigation Bar
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNav.selectedItemId = R.id.nav_home // Assuming Profile is accessible via Home/Dashboard path
