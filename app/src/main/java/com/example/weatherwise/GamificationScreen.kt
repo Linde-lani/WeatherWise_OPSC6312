@@ -39,7 +39,7 @@ class GamificationScreen : AppCompatActivity() {
                     true
                 }
                 R.id.nav_settings -> {
-                    startActivity(Intent(this, ProfileScreen::class.java))
+                    startActivity(Intent(this, SettingsScreen::class.java))
                     true
                 }
 
