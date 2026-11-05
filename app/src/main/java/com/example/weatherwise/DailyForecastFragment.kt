@@ -19,7 +19,7 @@ import java.util.Locale
  */
 class DailyForecastFragment : Fragment() {
 
-    private val API_KEY = "zpka_8d09c7fe1d8a49c3a0bd5c87de1a18e3_5e9eabd2"
+    private val API_KEY = "zpka_7a60f44cc3034119b10f89e87e5a37ea_af868641"
     private lateinit var dailyContainer: LinearLayout
 
     override fun onCreateView(
