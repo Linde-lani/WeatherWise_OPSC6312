@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Gradient for depth in dark mode (Navy Blue) -->
+    <gradient
+        android:startColor="#1B263B"
+        android:endColor="#0A192F"
+        android:angle="270"/>
+
+    <corners android:radius="0dp"/>
+</shape>

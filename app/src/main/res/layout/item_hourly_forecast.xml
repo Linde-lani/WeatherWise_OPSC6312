@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout for individual hourly forecast items in the horizontal scroll list -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:gravity="center"
+    android:layout_marginEnd="8dp"
+    android:background="@drawable/edittext_bg"
+    android:backgroundTint="#26FFFFFF">
+
+    <!-- Time of the forecast -->
+    <TextView
+        android:id="@+id/txtHourlyTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12 PM"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <!-- Weather condition icon placeholder -->
+    <ImageView
+        android:id="@+id/imgHourlyIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_cloud"
+        android:contentDescription="Hourly Weather Icon" />
+
+    <!-- Forecasted temperature -->
+    <TextView
+        android:id="@+id/txtHourlyTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="24°"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

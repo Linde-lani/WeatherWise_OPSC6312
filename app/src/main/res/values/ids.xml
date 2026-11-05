@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="txtLevelTitle" type="id" />
+    <item name="txtLevelProgressInfo" type="id" />
+    <item name="progressLevel" type="id" />
+    <item name="txtStreakTitle" type="id" />
+    <item name="txtStreakInfo" type="id" />
+    <item name="btnQuizOption1" type="id" />
+    <item name="btnQuizOption2" type="id" />
+    <item name="btnQuizOption3" type="id" />
+    <item name="txtQuizResult" type="id" />
+    <item name="cardBadgeFirstStep" type="id" />
+    <item name="cardBadgeSunChaser" type="id" />
+    <item name="txtQuest1Status" type="id" />
+    <item name="txtQuest2Status" type="id" />
+    <item name="txtLeaderboardUser" type="id" />
+    <item name="txtLeaderboardUserXP" type="id" />
+    <item name="cardQuiz" type="id" />
+    <item name="txtQuizQuestion" type="id" />
+    <item name="txtQuest1Title" type="id" />
+    <item name="txtQuest2Title" type="id" />
+</resources>

@@ -3,13 +3,21 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="@string/nav_home" />
     <item
-        android:id="@+id/nav_forecast"
-        android:icon="@drawable/ic_cloud"
-        android:title="Forecast" />
+        android:id="@+id/nav_search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/nav_search" />
+    <item
+        android:id="@+id/nav_notification"
+        android:icon="@drawable/ic_notifications"
+        android:title="@string/nav_notification" />
+    <item
+        android:id="@+id/nav_game"
+        android:icon="@drawable/ic_game"
+        android:title="@string/nav_game" />
     <item
         android:id="@+id/nav_settings"
         android:icon="@drawable/ic_settings"
-        android:title="Settings" />
+        android:title="@string/nav_settings" />
 </menu>

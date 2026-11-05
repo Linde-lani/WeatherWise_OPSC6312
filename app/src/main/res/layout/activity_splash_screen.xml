@@ -16,11 +16,26 @@
         android:gravity="center"
         android:background="@color/blue_500">
 
+        <!-- App Logo -->
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/weatherwise_logo"
-            android:contentDescription="WeatherWise Logo"/>
+            android:id="@+id/imgLogo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_cloud"
+            android:contentDescription="@string/app_name"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/txtAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WeatherWise"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true" />
     </LinearLayout>
 
 

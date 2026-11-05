@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App & General -->
+    <string name="app_name">WeatherWise</string>
+    <string name="app_tagline">Isimo sezulu sakho sendawo, senziwe lula.</string>
+    <string name="app_logo_desc">Ilogo ye-WeatherWise</string>
+    <string name="welcome_title">Siyakwamukela ku-WeatherWise</string>
+    <string name="welcome_back">Siyakwamukela futhi</string>
+    <string name="join_today">Joyina i-WeatherWise namuhla!</string>
+    <string name="get_started">Qala Manje</string>
+    <string name="login">Ngena</string>
+    <string name="sign_up">Bhalisa</string>
+    <string name="register">Bhalisa</string>
+    <string name="create_account">Dala I-akhawunti</string>
+    <string name="cancel">Khansela</string>
+    <string name="save">Gcina</string>
+    <string name="save_changes">Gcina Izinguquko</string>
+    <string name="back">Emuva</string>
+    <string name="menu_desc">Imenyu</string>
+    <string name="weather_icon_desc">Isithonjana sesimo sezulu</string>
+    <string name="logout">Phuma</string>
+    <string name="about">Mayelana</string>
+    <string name="completed">Kuphelile</string>
+    <string name="status_in_progress">Kuyaqhubeka</string>
+    <string name="settings">Izilungiselelo</string>
+    <string name="notifications">Izaziso</string>
+    <string name="my_profile">Iphrofayili Yami</string>
+    <string name="edit_profile">Hlela Iphrofayili</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Ikhaya</string>
+    <string name="nav_search">Funa</string>
+    <string name="nav_notification">Izaziso</string>
+    <string name="nav_game">Umdlalo</string>
+    <string name="nav_profile">Iphrofayili</string>
+    <string name="nav_settings">Izilungiselelo</string>
+
+    <!-- Authentication & Profile Inputs -->
+    <string name="email_hint">I-imeyili</string>
+    <string name="password_hint">Iphasiwedi</string>
+    <string name="confirm_password_hint">Qinisekisa Iphasiwedi</string>
+    <string name="username_hint">Igama lomsebenzisi</string>
+    <string name="new_password_hint">Iphasiwedi Entsha</string>
+    <string name="confirm_new_password_hint">Qinisekisa Iphasiwedi Entsha</string>
+    <string name="forgot_password">Ukhohlwe iphasiwedi?</string>
+    <string name="dont_have_account">Awunayo i-akhawunti? Bhalisa</string>
+    <string name="already_have_account">Usuvele unayo i-akhawunti? Ngena</string>
+
+    <!-- Dashboard & Weather -->
+    <string name="synced">Ihlanganisiwe</string>
+    <string name="feels_like">Kuzwakala sengathi %1$s</string>
+    <string name="saved_locations">Izindawo Ezilondoloziwe</string>
+    <string name="hourly_forecast">Isibikezelo Sehora Ngehora</string>
+    <string name="daily_forecast">Isibikezelo Sansuku Zonke</string>
+    <string name="five_day_forecast">Isibikezelo Sezinsuku Ezi-5</string>
+    <string name="seven_day_forecast">Isibikezelo Sezinsuku Ezi-7</string>
+    <string name="level_button">🏆 Izinga</string>
+    <string name="hourly_icon_desc">Isithonjana sehora</string>
+    <string name="daily_icon_desc">Isithonjana sansuku</string>
+    <string name="search_for_city_or_region">Funa idolobha noma indawo</string>
+    <string name="add_to_favorites">Engeza Ezintandokazini</string>
+
+    <!-- Search Screen -->
+    <string name="search_location">Funa Indawo</string>
+    <string name="explore_weather">Hlola Isimo Sezulu</string>
+    <string name="search_prompt">Funa noma iliphi idolobha ukuze ubone isimo sezulu samanje nezibikezelo.</string>
+    <string name="heatwave_warning">Isexwayiso sokushisa okukhulu</string>
+    <string name="ai_recommendation">Isincomo se-AI</string>
+    <string name="ai_recommendation_text">Kushisa kakhulu ngaphandle. Gqoka izingubo ezilula uphuze amanzi!</string>
+    <string name="day_fallback">Usuku %1$d</string>
+    <string name="search_failed">Ukusesha kehlulekile: %1$s</string>
+    <string name="no_locations_found">Azikho izindawo ezitholakele.</string>
+    <string name="select_location_first">Sicela usese futhi ukhethe indawo kuqala.</string>
+    <string name="added_to_saved">I-%1$s yengeziwe ohlwini lwezindawo Ezilondoloziwe!</string>
+    <string name="already_in_saved">I-%1$s sekuyisendawo yakho Ezilondoloziwe!</string>
+
+    <!-- Profile & Edit Profile -->
+    <string name="change_photo">Shintsha Isithombe</string>
+    <string name="photo_updated">Isithombe sephrofayili sibuyekezwe ngempumelelo!</string>
+    <string name="failed_load_image">Kuhlulekile ukulayisha isithombe: %1$s</string>
+    <string name="username_empty">Igama lomsebenzisi alikwazi ukushiywa lingenalutho</string>
+    <string name="password_mismatch">Iphasiwedi entsha kanye nokuqinisekisa iphasiwedi akufani!</string>
+    <string name="password_too_short">Iphasiwedi kumele ibe nezinhlamvu ezingu-6 ezingenani elincane</string>
+    <string name="saved_locally">Gcinwe endaweni. Impendulo yokuhlanganisa: %1$s</string>
+    <string name="profile_and_password_updated">Iphrofayili nephasiwedi kubuyekeziwe ngempumelelo!</string>
+
+    <!-- Settings Screen -->
+    <string name="theme_mode">Imodi Yesihloko</string>
+    <string name="enable_dark_theme">Vula Isihloko Esimnyama</string>
+    <string name="auto_dark_mode_sunset">Imodi Emnyama Ngokushona Kwelanga</string>
+    <string name="app_language">Ulimi Lwe-App</string>
+    <string name="change_to_english">Shintshela ku-English</string>
+    <string name="change_to_sesotho">Shintshela ku-Sesotho</string>
+    <string name="change_to_isizulu">Shintshela ku-isiZulu</string>
+    <string name="dark_theme_enabled">Isihloko esimnyama sivuliwe</string>
+    <string name="light_theme_enabled">Isihloko esikhanyayo sivuliwe</string>
+    <string name="auto_sunset_enabled">Imodi emnyama ngokushona kwelanga ivuliwe</string>
+    <string name="auto_sunset_disabled">Imodi emnyama ngokushona kwelanga ivaliwe</string>
+    <string name="lang_switched_english">Ulimi lushintshelwe ku-English</string>
+    <string name="lang_switched_sesotho">Ulimi lushintshelwe ku-Sesotho (Kopo e amohetswe)</string>
+    <string name="lang_switched_zulu">Ulimi lushintshelwe ku-isiZulu (Isicelo samukelwe)</string>
+
+    <!-- Notifications Screen -->
+    <string name="all_caught_up">Kuphelele konke!</string>
+    <string name="selected_deleted">Imilayezo ekhethiwe isusiwe</string>
+    <string name="storm_warning_title">Isexwayiso Sesiphepho</string>
+    <string name="storm_warning_msg">Isiphepho esinamandla sibonakale eduze kwendawo yakho.</string>
+    <string name="temp_alert_title">Isexwayiso Sokushisa</string>
+    <string name="temp_alert_msg">Ukushisa okukhulu kulindeleke phakathi kuka-1 PM no-4 PM.</string>
+    <string name="daily_summary_title">Isifinyezo Sansuku Zonke</string>
+    <string name="daily_summary_msg">Kusasa kuzoba nelanga futhi kushisa. Kuhle ukuya ehlathini!</string>
+    <string name="system_title">Isistimu</string>
+    <string name="welcome_synced_msg">Siyakwamukela ku-WeatherWise! Idatha yakho ihlanganisiwe.</string>
+    <string name="time_just_now">Manje nje</string>
+    <string name="time_2h_ago">Amahora ama-2 adlule</string>
+    <string name="time_5h_ago">Amahora ama-5 adlule</string>
+    <string name="time_yesterday">Izolo</string>
+    <string name="weather_alert">Isexwayiso Sesimo Sezulu</string>
+    <string name="heavy_rain_msg">Kulindeleke izulu elinamandla ntambama.</string>
+
+    <!-- Gamification & Achievements -->
+    <string name="weather_achievements">Impumelelo Yesimo Sezulu</string>
+    <string name="level_observer">Izinga 1: Umbukeli Wesimo Sezulu</string>
+    <string name="level_rain_spotter">Izinga 2: Umbukeli Wezimvula</string>
+    <string name="level_cloud_specialist">Izinga 3: Ingoti Yamafu</string>
+    <string name="level_storm_tracker">Izinga 4: Umlandeli Weziphepho</string>
+    <string name="level_master">Izinga 5: Umphathi we-WeatherWise</string>
+    <string name="xp_value">%1$d XP</string>
+    <string name="xp_to_next_level">I-XP engu-%1$d ukuya kwizinga elilandelayo</string>
+    <string name="max_level_reached">Ufinyelele izinga eliphezulu! Ungumphathi wesimo sezulu!</string>
+    <string name="streak_title">Izinsuku ezingu-%1$d zesimo sezulu ngokulandelana 🔥</string>
+    <string name="streak_info">Hlola isimo sezulu nsuku zonke ukuze uthole amabhonasi!</string>
+    <string name="streak_info_active">Kuhle! Qhubeka uvula i-WeatherWise nsuku zonke ukuze wakhe ukulandelana kwakho!</string>
+    <string name="streak_info_start">Ngena nsuku zonke ukuze wakhe ukulandelana kwakho futhi uthole i-XP eengeziwe!</string>
+    <string name="quiz_title">🧠 Umbuzo Wansuku Zonke Wesimo Sezulu (+25 XP)</string>
+    <string name="quiz_question">Yiluphi uhlobo lwamafu olukhiqiza iziphepho ezinamandla?</string>
+    <string name="quiz_option_a">A) Cumulonimbus</string>
+    <string name="quiz_option_b">B) Cirrus</string>
+    <string name="quiz_option_c">C) Stratus</string>
+    <string name="quiz_correct_toast">Kulungile! Uthole i-+25 XP!</string>
+    <string name="quiz_correct_result">Kulungile! I-+25 XP itholakele!</string>
+    <string name="quiz_incorrect_cirrus">Akulungile! Amafu e-Cirrus ayizicucu eziphakeme nezincane.</string>
+    <string name="quiz_incorrect_stratus">Akulungile! Amafu e-Stratus akha imvula encane.</string>
+    <string name="quiz_incorrect_result">Akulungile! Zama futhi kusasa.</string>
+    <string name="quiz_completed_today">Kuphelile namuhla! (+25 XP itholakele)</string>
+    <string name="active_quests">🎯 Imisebenzi Esebenzayo</string>
+    <string name="quest1_title">🔍 Umhloli Womhlaba (+30 XP)</string>
+    <string name="quest1_desc">Gcina izindawo ezintathu ezintandekayo noma ngaphezulu.</string>
+    <string name="quest1_completed">Kuphelile (+30 XP) ✓</string>
+    <string name="locations_progress">%1$d/3 Izindawo</string>
+    <string name="quest2_title">🌙 Umuntu Wasebusuku (+20 XP)</string>
+    <string name="quest2_desc">Hlola isimo sezulu ngemva kwe-8:00 PM.</string>
+    <string name="quest2_completed">Kuphelile (+20 XP) ✓</string>
+    <string name="quest2_pending">Hlola ngemva kwe-8 PM</string>
+    <string name="unlocked_badges">🏆 Amabheji Avuliwe</string>
+    <string name="badge_world_explorer">Ibheji Lomhloli Womhlaba (+50 XP)</string>
+    <string name="badge_world_explorer_desc">Livulwa ngokungeza izindawo ezi-3 noma ngaphezulu ohlwini lwakho.</string>
+    <string name="badge_first_step">Ibheji Isinyathelo Sokuqala (+30 XP)</string>
+    <string name="badge_first_step_desc">Livulwa ngokudala iphrofayili yakho ye-WeatherWise.</string>
+    <string name="badge_sun_chaser">Ibheji Lomfuni Welanga (+40 XP)</string>
+    <string name="badge_sun_chaser_desc">Livulwa ngokuhlola isimo sezulu ngesikhathi kukhanya kakhulu.</string>
+    <string name="leaderboard">🥇 Ibhodi Labaphumelele</string>
+    <string name="leaderboard_you">2. Wena (%1$s)</string>
+
+    <!-- About Screen -->
+    <string name="about_title">Mayelana ne-WeatherWise</string>
+    <string name="about_version">WeatherWise v1.0</string>
+    <string name="about_description">I-WeatherWise ingumngane wakho omkhulu wezibuyekezo zesimo sezulu sesikhathi sangempela kanye nezibikezelo ezinembile. Yakhelwe ukunemba nokuhlangenwa nakho komsebenzisi, sikunikeza izimo zakamuva ezisekelwe yizinsiza eziholayo ze-AccuWeather.</string>
+    <string name="key_features">Izici Ezibalulekile</string>
+    <string name="about_features_list">• Izinga Lokushisa Nezimo Sesikhathi Sangempela\n• Izibikezelo Zehora Nezansuku Ezinembile\n• Izexwayiso Zesimo Sezulu Esinamandla\n• Izeluleko Zangaphandle Ezihlelwe Ngokwakho</string>
+    <string name="about_copyright">© 2024 WeatherWise Inc.</string>
+</resources>

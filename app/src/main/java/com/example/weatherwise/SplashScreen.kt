@@ -41,11 +41,17 @@ class SplashScreen : AppCompatActivity() {
 //            finish() // Close SplashActivity so user can’t return to it
 //        }, 2000) // 2000 ms = 2 seconds
 
-        // Delay for 2 seconds, then go straight to WelcomeActivity
+        // Delay for 2 seconds, check session state, then navigate accordingly
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, WelcomeScreen::class.java))
-            finish() // Close SplashActivity so user can’t return to it
-        }, 2000) // 2000 ms = 2 seconds
+            val sharedPrefs = getSharedPreferences("WeatherWisePrefs", MODE_PRIVATE)
+            val isLoggedIn = sharedPrefs.getBoolean("is_logged_in", false)
+            if (isLoggedIn) {
+                startActivity(Intent(this, DashboardScreen::class.java))
+            } else {
+                startActivity(Intent(this, WelcomeScreen::class.java))
+            }
+            finish() // Close SplashActivity so user can't return to it
+        }, 2000)
 
 
     }

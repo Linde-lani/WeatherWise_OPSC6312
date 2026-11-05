@@ -44,8 +44,6 @@
             android:textColor="@color/blue_700"
             android:layout_marginBottom="32dp"/>
 
-
-
         <!-- Email Input -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -53,8 +51,7 @@
             android:layout_marginBottom="16dp"
             android:hint="      Email"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            app:startIconDrawable="@drawable/ic_email"
-            app:startIconPadding="16dp">
+            app:startIconDrawable="@drawable/ic_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtEmail"
@@ -69,12 +66,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:hint="      Password"
-
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             app:startIconDrawable="@drawable/ic_lock"
-            app:endIconMode="password_toggle"
-
-            app:startIconPadding="16dp">
+            app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtPassword"
@@ -95,8 +89,7 @@
             android:textStyle="bold"
             android:padding="8dp" />
 
-
-        <!-- Register Button -->
+        <!-- Login Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
@@ -116,7 +109,8 @@
             android:text="Dont have an account? Register"
             android:textColor="@color/blue_700"
             android:textStyle="bold"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:onClick="register"/>
 
     </LinearLayout>
 </ScrollView>

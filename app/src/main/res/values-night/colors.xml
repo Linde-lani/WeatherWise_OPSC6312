@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue_200">#1B263B</color>   <!-- Navy Blue -->
+    <color name="blue_500">#0A192F</color>   <!-- Deep Navy Blue -->
+    <color name="blue_700">#0D1B2A</color>   <!-- Dark Navy Blue -->
+</resources>

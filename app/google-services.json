@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "799643053800",
+    "project_id": "weatherwise-beb27",
+    "storage_bucket": "weatherwise-beb27.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799643053800:android:dd72b6464a1a469eff235d",
+        "android_client_info": {
+          "package_name": "com.example.weatherwise"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2Arstr53ZGfce7atF87X4T0vd-ThacRE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App & General -->
+    <string name="app_name">WeatherWise</string>
+    <string name="app_tagline">Boemo ba leholimo ba heno, bo bonolo.</string>
+    <string name="app_logo_desc">Lebitso la WeatherWise</string>
+    <string name="welcome_title">Re le amohela ho WeatherWise</string>
+    <string name="welcome_back">Re le amohela hape</string>
+    <string name="join_today">Kenela WeatherWise kajeno!</string>
+    <string name="get_started">Qala Hore</string>
+    <string name="login">Kena</string>
+    <string name="sign_up">Ingolisa</string>
+    <string name="register">Ingolisa</string>
+    <string name="create_account">Theha Akhaonto</string>
+    <string name="cancel">Hlakola</string>
+    <string name="save">Boloka</string>
+    <string name="save_changes">Boloka Liphetoho</string>
+    <string name="back">Morao</string>
+    <string name="menu_desc">Menyu</string>
+    <string name="weather_icon_desc">Setšoantšo sa boemo ba leholimo</string>
+    <string name="logout">Tsoa</string>
+    <string name="about">Ka ho</string>
+    <string name="completed">E phethiloe</string>
+    <string name="status_in_progress">E ntse e tsoela pele</string>
+    <string name="settings">Litlhophiso</string>
+    <string name="notifications">Litsebiso</string>
+    <string name="my_profile">Profaele ea Ka</string>
+    <string name="edit_profile">Lokisa Profaele</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Gae</string>
+    <string name="nav_search">Batla</string>
+    <string name="nav_notification">Litsebiso</string>
+    <string name="nav_game">Papali</string>
+    <string name="nav_profile">Profaele</string>
+    <string name="nav_settings">Litlhophiso</string>
+
+    <!-- Authentication & Profile Inputs -->
+    <string name="email_hint">Imeile</string>
+    <string name="password_hint">Phasewete</string>
+    <string name="confirm_password_hint">Netefatsa Phasewete</string>
+    <string name="username_hint">Lebitso la mosebedisi</string>
+    <string name="new_password_hint">Phasewete e Ncha</string>
+    <string name="confirm_new_password_hint">Netefatsa Phasewete e Ncha</string>
+    <string name="forgot_password">U lebetse phasewete?</string>
+    <string name="dont_have_account">Ha u na akhaonto? Ingolisa</string>
+    <string name="already_have_account">U se u na le akhaonto? Kena</string>
+
+    <!-- Dashboard & Weather -->
+    <string name="synced">E kopantsoe</string>
+    <string name="feels_like">E utloahala joalo ka %1$s</string>
+    <string name="saved_locations">Libaka tse Bolokiloeng</string>
+    <string name="hourly_forecast">Boemo ba Leholimo ka Hora</string>
+    <string name="daily_forecast">Boemo ba Leholimo ka Letsatsi</string>
+    <string name="five_day_forecast">Boemo ba Matsatsi a 5</string>
+    <string name="seven_day_forecast">Boemo ba Matsatsi a 7</string>
+    <string name="level_button">🏆 Mohato</string>
+    <string name="hourly_icon_desc">Setšoantšo sa hora</string>
+    <string name="daily_icon_desc">Setšoantšo sa letsatsi</string>
+    <string name="search_for_city_or_region">Batla motse kapa sebaka</string>
+    <string name="add_to_favorites">Eketsa ho Tse Ratoang</string>
+
+    <!-- Search Screen -->
+    <string name="search_location">Batla Sebaka</string>
+    <string name="explore_weather">Sheba Boemo ba Leholimo</string>
+    <string name="search_prompt">Batla motse ofe kapa ofe ho bona boemo ba hona joale le ponelopele.</string>
+    <string name="heatwave_warning">Tlhokomeliso ea mocheso o feteletseng</string>
+    <string name="ai_recommendation">Keletso ea AI</string>
+    <string name="ai_recommendation_text">Ho chesa haholo kantle. Apara liaparo tse bobebe mme u nke metsi!</string>
+    <string name="day_fallback">Letsatsi %1$d</string>
+    <string name="search_failed">Ho batla ho hlolehile: %1$s</string>
+    <string name="no_locations_found">Ha ho fumanoe libaka.</string>
+    <string name="select_location_first">Ka kopo batla mme u khethe sebaka pele.</string>
+    <string name="added_to_saved">%1$s e ekelitsoe lenaneng la Libaka tse Bolokiloeng!</string>
+    <string name="already_in_saved">%1$s e se e le lenaneng la hao la Libaka tse Bolokiloeng!</string>
+
+    <!-- Profile & Edit Profile -->
+    <string name="change_photo">Fetola Setšoantšo</string>
+    <string name="photo_updated">Setšoantšo sa profaele se ntlafalitsoe ka katleho!</string>
+    <string name="failed_load_image">Ho hlolehile ho kenya setšoantšo: %1$s</string>
+    <string name="username_empty">Lebitso la mosebedisi ha le lokela ho ba lefeela.</string>
+    <string name="password_mismatch">Phasewete e ncha le netefatso ea phasewete ha li tsamaisane!</string>
+    <string name="password_too_short">Phasewete e tlameha ho ba le matlapa a 6 bonyane</string>
+    <string name="saved_locally">E bolokiloe fatshe. Karabo ea sync: %1$s</string>
+    <string name="profile_and_password_updated">Profaele le phasewete li ntlafalitsoe ka katleho!</string>
+
+    <!-- Settings Screen -->
+    <string name="theme_mode">Mokhoa oa Mebala</string>
+    <string name="enable_dark_theme">Bulela Mokhoa o Moputsoa</string>
+    <string name="auto_dark_mode_sunset">Mokhoa o Moputsoa ha Letsatsi le Lula</string>
+    <string name="app_language">Puo ea App</string>
+    <string name="change_to_english">Fetola ho Senyesemane</string>
+    <string name="change_to_sesotho">Fetola ho Sesotho</string>
+    <string name="change_to_isizulu">Fetola ho isiZulu</string>
+    <string name="dark_theme_enabled">Mokhoa o moputsoa o buletsoe</string>
+    <string name="light_theme_enabled">Mokhoa o hlaphileng o buletsoe</string>
+    <string name="auto_sunset_enabled">Mokhoa o moputsoa ha letsatsi le lula o buletsoe</string>
+    <string name="auto_sunset_disabled">Mokhoa o moputsoa ha letsatsi le lula o tima</string>
+    <string name="lang_switched_english">Puo e fetotsoe ho Senyesemane</string>
+    <string name="lang_switched_sesotho">Puo e fetotsoe ho Sesotho (Kopo e amohetswe)</string>
+    <string name="lang_switched_zulu">Puo e fetotsoe ho isiZulu (Isicelo samukelwe)</string>
+
+    <!-- Notifications Screen -->
+    <string name="all_caught_up">Ha ho letho le setseng!</string>
+    <string name="selected_deleted">Melaetsa e khethiloeng e hlakotsoe</string>
+    <string name="storm_warning_title">Tlhokomeliso ea Sefefo</string>
+    <string name="storm_warning_msg">Sefefo se matla se bonoe haufi le sebaka sa hao.</string>
+    <string name="temp_alert_title">Tlhokomeliso ea Mocheso</string>
+    <string name="temp_alert_msg">Mocheso o feteletseng o lebelletsoe pakeng tsa 1 PM le 4 PM.</string>
+    <string name="daily_summary_title">Kakaretso ea Letsatsi</string>
+    <string name="daily_summary_msg">Hosane ho tla ba le letsatsi le hlaphileng. Ho loketse ho tsamaea!</string>
+    <string name="system_title">Sistimi</string>
+    <string name="welcome_synced_msg">Re u amohela ho WeatherWise! Data ea hao e kopantsoe.</string>
+    <string name="time_just_now">Hona joale</string>
+    <string name="time_2h_ago">Lihora tse 2 tse fetileng</string>
+    <string name="time_5h_ago">Lihora tse 5 tse fetileng</string>
+    <string name="time_yesterday">Maobane</string>
+    <string name="weather_alert">Tlhokomeliso ea Boemo ba Leholimo</string>
+    <string name="heavy_rain_msg">Pula e matla e lebelletsoe motšehare ona.</string>
+
+    <!-- Gamification & Achievements -->
+    <string name="weather_achievements">Katleho tsa Boemo ba Leholimo</string>
+    <string name="level_observer">Mohato 1: Mohlahlobi oa Leholimo</string>
+    <string name="level_rain_spotter">Mohato 2: Mosebetsi oa Pula</string>
+    <string name="level_cloud_specialist">Mohato 3: Setsebi sa Maru</string>
+    <string name="level_storm_tracker">Mohato 4: Mohlahlobi oa Sefefo</string>
+    <string name="level_master">Mohato 5: Mophethi oa WeatherWise</string>
+    <string name="xp_value">%1$d XP</string>
+    <string name="xp_to_next_level">%1$d XP ho ea mohatong o latelang</string>
+    <string name="max_level_reached">Mohato o phahameng o fihletsoe! U Mophethi oa Leholimo!</string>
+    <string name="streak_title">Matsatsi a %1$d a leholimo a latellana 🔥</string>
+    <string name="streak_info">Hlahloba boemo ba leholimo letsatsi le letsatsi ho fumana melemo ea tatellano!</string>
+    <string name="streak_info_active">Hantle! Qhubeka u bula WeatherWise letsatsi le letsatsi ho haha tatellano ea hao!</string>
+    <string name="streak_info_start">Hlahloba letsatsi le letsatsi ho haha tatellano ea hao mme u fumane XP e eketsehileng!</string>
+    <string name="quiz_title">🧠 Potso ea Letsatsi ka Leholimo (+25 XP)</string>
+    <string name="quiz_question">Ke mofuta ofe oa maru o hlahisang lifefo tse matla?</string>
+    <string name="quiz_option_a">A) Cumulonimbus</string>
+    <string name="quiz_option_b">B) Cirrus</string>
+    <string name="quiz_option_c">C) Stratus</string>
+    <string name="quiz_correct_toast">Hantle! U fumane +25 XP!</string>
+    <string name="quiz_correct_result">Hantle! +25 XP e fumanoe!</string>
+    <string name="quiz_incorrect_cirrus">Ha se hantle! Maru a Cirrus ke maru a phahameng a manyane joaloka moea.</string>
+    <string name="quiz_incorrect_stratus">Ha se hantle! Maru a Stratus a hlahisa pula e nyane.</string>
+    <string name="quiz_incorrect_result">Ha se hantle! Leka hape hosane.</string>
+    <string name="quiz_completed_today">E phethiloe bakeng sa kajeno! (+25 XP e fumanoe)</string>
+    <string name="active_quests">🎯 Merero e Sebetsang</string>
+    <string name="quest1_title">🔍 Mohlahlobi oa Lefatše (+30 XP)</string>
+    <string name="quest1_desc">Boloka libaka tse 3 tse ratoang ho bonyane.</string>
+    <string name="quest1_completed">E phethiloe (+30 XP) ✓</string>
+    <string name="locations_progress">%1$d/3 Libaka</string>
+    <string name="quest2_title">🌙 Motsamai oa Bosiu (+20 XP)</string>
+    <string name="quest2_desc">Hlahloba boemo ba leholimo kamora 8:00 PM.</string>
+    <string name="quest2_completed">E phethiloe (+20 XP) ✓</string>
+    <string name="quest2_pending">Hlahloba kamora 8 PM</string>
+    <string name="unlocked_badges">🏆 Lipadi tse Bulletsoeng</string>
+    <string name="badge_world_explorer">Padi ea Mohlahlobi oa Lefatše (+50 XP)</string>
+    <string name="badge_world_explorer_desc">E bulloa ka ho eketsa libaka tse 3 kapa ho feta lenaneng la hao.</string>
+    <string name="badge_first_step">Padi ea Mohato oa Pele (+30 XP)</string>
+    <string name="badge_first_step_desc">E bulloa ka ho theha profaele ea hao ea WeatherWise.</string>
+    <string name="badge_sun_chaser">Padi ea Motsomi oa Letsatsi (+40 XP)</string>
+    <string name="badge_sun_chaser_desc">E bulloa ka ho hlahloba boemo ba leholimo ha letsatsi le chabile.</string>
+    <string name="leaderboard">🥇 Lethathamo la Maemo</string>
+    <string name="leaderboard_you">2. Uena (%1$s)</string>
+
+    <!-- About Screen -->
+    <string name="about_title">Mabapi le WeatherWise</string>
+    <string name="about_version">WeatherWise v1.0</string>
+    <string name="about_description">WeatherWise ke mothusi oa hao ea hlollang bakeng sa litlhahiso tsa boemo ba leholimo ka nako ea nnete le lipontšo tse nepahetseng. E hahiloe ka tlhokomelo ea ho nepahala le boiphihlelo ba basebelisi, re u fa maemo a morao-rao a sebelisa litšebeletso tsa AccuWeather tse etellang pele.</string>
+    <string name="key_features">Likarolo tsa Bohlokoa</string>
+    <string name="about_features_list">• Mocheso le Boemo ba Nako ea Nnete\n• Lipontšo tsa Hora le Letsatsi tse Nepahetseng\n• Litlhokomeliso tsa Boemo bo Matla ba Leholimo\n• Likeletso tsa Kantle tse Ikhethang</string>
+    <string name="about_copyright">© 2024 WeatherWise Inc.</string>
+</resources>
