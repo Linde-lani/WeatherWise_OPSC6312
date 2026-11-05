@@ -16,6 +16,12 @@
 * 👤 **Profile & Customization**: Manage user profiles, update profile pictures, and adjust application settings.
 
 ---
+One of our flagship ideas in **WeatherWise** is the **Auto-Sunset Dark Mode & Dynamic Background System** implemented in [`ThemeUtils.kt`](file:///C:/Users/asus/Downloads/WeatherWise/app/src/main/java/com/example/weatherwise/ThemeUtils.kt).
+
+ * 🌆 **Automatic Sunset Detection**: The app intelligently checks your local system time (between 18:00 / 6 PM and 06:00 / 6 AM) or live daytime condition APIs to automatically switch the application theme into Dark Mode at sunset without user intervention.
+ * 🎨 **Adaptive Background Color Switching**: Dynamically transitions root layout backgrounds between vibrant **Sky Blue (`bg_skyblue.xml`)** during the day and deep **Navy Blue (`bg_navyblue.xml`)** during the night and in Dark Mode.
+ * ⚙️ **User Preference Controls**: Located in [`SettingsScreen.kt`](file:///C:/Users/asus/Downloads/WeatherWise/app/src/main/java/com/example/weatherwise/SettingsScreen.kt), users can toggle between manual Dark Theme, Light Theme, or enable/disable Auto-Sunset mode at any time.
+
 
 ## 🛠️ Architecture & Tech Stack
 
