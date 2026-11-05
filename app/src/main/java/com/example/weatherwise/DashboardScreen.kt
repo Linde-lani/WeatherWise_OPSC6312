@@ -184,7 +184,6 @@ class DashboardScreen : AppCompatActivity() {
             popup.show()
         }
     }
-
     private fun setupBottomNavigation() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNav.selectedItemId = R.id.nav_home
