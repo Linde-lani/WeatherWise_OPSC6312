@@ -2,9 +2,11 @@ package com.example.weatherwise
 
 import android.content.Context
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,15 +14,14 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
-
 class SearchScreen : AppCompatActivity() {
 
-    private val API_KEY = "zpka_8d09c7fe1d8a49c3a0bd5c87de1a18e3_5e9eabd2"
+    private val API_KEY = "zpka_7a60f44cc3034119b10f89e87e5a37ea_af868641"
     private var currentSearchedKey: String? = null
     private var currentSearchedName: String? = null
 
@@ -37,33 +38,37 @@ class SearchScreen : AppCompatActivity() {
 
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
         val edtSearchQuery = findViewById<TextInputEditText>(R.id.edtSearchQuery)
-        val itemSearchResult = findViewById<LinearLayout>(R.id.itemSearchResult)
-        val txtSearchResultName = findViewById<TextView>(R.id.txtSearchResultName)
+        val textInputLayout = edtSearchQuery.parent.parent as? TextInputLayout
         val txtSelectedLocation = findViewById<TextView>(R.id.txtSelectedLocation)
         val btnAddToFavorites = findViewById<MaterialButton>(R.id.btnAddToFavorites)
 
         btnBack.setOnClickListener { finish() }
 
-        edtSearchQuery.setOnEditorActionListener { v, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                val query = edtSearchQuery.text.toString().trim()
-                if (query.isNotEmpty()) {
-                    performLocationSearch(query)
-                }
+        fun triggerSearch() {
+            val query = edtSearchQuery.text.toString().trim()
+            if (query.isNotEmpty()) {
+                hideKeyboard()
+                performLocationSearch(query)
+            } else {
+                Toast.makeText(this, "Please enter a city name to search", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        edtSearchQuery.setOnEditorActionListener { _, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                actionId == EditorInfo.IME_ACTION_DONE ||
+                actionId == EditorInfo.IME_ACTION_GO ||
+                (event != null && event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)
+            ) {
+                triggerSearch()
                 true
             } else {
                 false
             }
         }
 
-        itemSearchResult.setOnClickListener {
-            val locationKey = itemSearchResult.tag as? String ?: return@setOnClickListener
-            val cityName = txtSearchResultName.text.toString().split(",")[0]
-            currentSearchedKey = locationKey
-            currentSearchedName = cityName
-            
-            txtSelectedLocation.text = cityName
-            fetchWeatherDetails(locationKey, cityName)
+        textInputLayout?.setStartIconOnClickListener {
+            triggerSearch()
         }
 
         btnAddToFavorites.setOnClickListener {
@@ -86,25 +91,56 @@ class SearchScreen : AppCompatActivity() {
         }
     }
 
+    private fun hideKeyboard() {
+        val view = currentFocus ?: findViewById(R.id.main)
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        imm?.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
     private fun performLocationSearch(query: String) {
         val layoutEmptyState = findViewById<LinearLayout>(R.id.layoutEmptyState)
         val layoutSearchResults = findViewById<LinearLayout>(R.id.layoutSearchResults)
-        val txtSearchResultName = findViewById<TextView>(R.id.txtSearchResultName)
-        val itemSearchResult = findViewById<LinearLayout>(R.id.itemSearchResult)
+        val layoutWeatherDetails = findViewById<LinearLayout>(R.id.layoutWeatherDetails)
 
         WeatherServiceClient.api.searchLocation(API_KEY, query).enqueue(object : Callback<List<AccuLocation>> {
             override fun onResponse(call: Call<List<AccuLocation>>, response: Response<List<AccuLocation>>) {
                 val locations = response.body()
                 if (response.isSuccessful && !locations.isNullOrEmpty()) {
-                    val firstLocation = locations[0]
-                    txtSearchResultName.text = "${firstLocation.name}, ${firstLocation.country.name}"
-                    itemSearchResult.tag = firstLocation.key
-                    
                     layoutEmptyState.visibility = View.GONE
+                    layoutWeatherDetails.visibility = View.GONE
                     layoutSearchResults.visibility = View.VISIBLE
-                    findViewById<LinearLayout>(R.id.layoutWeatherDetails).visibility = View.GONE
+                    layoutSearchResults.removeAllViews()
+
+                    val inflater = LayoutInflater.from(this@SearchScreen)
+
+                    for (loc in locations) {
+                        val itemView = inflater.inflate(R.layout.item_notification, layoutSearchResults, false)
+                        val txtTitle = itemView.findViewById<TextView>(R.id.txtTitle)
+                        val txtMessage = itemView.findViewById<TextView>(R.id.txtMessage)
+                        val txtTime = itemView.findViewById<TextView>(R.id.txtTime)
+                        val imgIcon = itemView.findViewById<ImageView>(R.id.imgType)
+
+                        txtTitle.text = loc.name
+                        txtMessage.text = loc.country.name
+                        txtTime.text = loc.key
+                        imgIcon.setImageResource(R.drawable.ic_cloud)
+
+                        itemView.setOnClickListener {
+                            currentSearchedKey = loc.key
+                            currentSearchedName = loc.name
+                            findViewById<TextView>(R.id.txtSelectedLocation).text = loc.name
+                            fetchWeatherDetails(loc.key, loc.name)
+                        }
+
+                        layoutSearchResults.addView(itemView)
+                    }
                 } else {
-                    Toast.makeText(this@SearchScreen, "No locations found.", Toast.LENGTH_SHORT).show()
+                    val msg = if (response.code() == 401 || response.code() == 403) {
+                        "API limit or key invalid. Try again later."
+                    } else {
+                        "No locations found for '$query'."
+                    }
+                    Toast.makeText(this@SearchScreen, msg, Toast.LENGTH_SHORT).show()
                 }
             }
 
